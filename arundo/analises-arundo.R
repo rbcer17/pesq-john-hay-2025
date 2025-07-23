@@ -69,3 +69,14 @@ ggplot(haykenya, aes(x = `Altura (m)`, y = `P S Total (g)`, color = coletor)) +
        x = "Altura",
        y = "Peso") +
   scale_color_manual(values = c("blue", "red")) # Optional: Customize color
+#Testing if repeated measures show different regressions
+hayrepeats = as.data.frame(hay_arundo_repeats_vs_no)
+hayrepeats$Grupo = as.factor(hayrepeats$Grupo)
+hayrepeats$repeats = as.factor(hayrepeats$repeats)
+ggplot(hayrepeats, aes(x = `Altura Total (m)`, y = `P S Total 2 (g)`, color = repeats)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Two Regression Lines on One Plot",
+       x = "Altura",
+       y = "Peso") +
+  scale_color_manual(values = c("blue", "red")) # Optional: Customize color
